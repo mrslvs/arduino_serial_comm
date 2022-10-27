@@ -18,12 +18,19 @@ parser.on("data", (data) => {
       "got handshake, arduino is waiting for my confirmation for 3 seconds"
     );
 
-    port.write("\u0080a\r");
+    // port.write("\u0080a\r");
+    // port.write("a", "ascii");
+    port.write("mirko\n");
+  } else if (data == 992) {
+    console.log("saving char to array");
+  } else if (data == 993) {
+    console.log(
+      "got to the ending symbol, starting to broadcast received message"
+    );
   } else if (data == 1236) {
     console.log("ending communication");
   } else {
-    console.log("arduino received server_shake:");
-    console.log(data);
+    console.log("message: " + data);
   }
 
   //   else {

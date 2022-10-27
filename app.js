@@ -20,7 +20,7 @@ parser.on("data", (data) => {
 
     // port.write("\u0080a\r");
     // port.write("a", "ascii");
-    port.write("mirko\n");
+    port.write("abc\n");
   } else if (data == 992) {
     console.log("saving char to array");
   } else if (data == 993) {

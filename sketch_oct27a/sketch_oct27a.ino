@@ -2,11 +2,13 @@
 
 Servo servo;
 
+int count = 0;
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9060);
   servo.attach(10);
-  servo.write(100);
+  servo.write(50);
 }
 
 void loop() {
@@ -19,9 +21,8 @@ void loop() {
     servo.write(180);
   }
 
-  for(int i = 0; i<10; i++){
-  Serial.print(i);
-  }
-  Serial.println();
+  Serial.println(count);
+  count ++;
+  delay(1000);
 
 }

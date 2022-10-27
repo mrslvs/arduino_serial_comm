@@ -13,15 +13,33 @@ const parser = new ReadlineParser();
 
 port.pipe(parser);
 parser.on("data", (data) => {
-  console.log(data);
+  if (data == 1234) {
+    console.log(
+      "got handshake, arduino is waiting for my confirmation for 3 seconds"
+    );
 
-  if (data % 2 === 0) {
-    console.log("got even number, go up");
-    port.write(2);
+    port.write("\u0080a\r");
+  } else if (data == 1236) {
+    console.log("ending communication");
   } else {
-    console.log("got odd number, go down");
-    port.write(1);
+    console.log("arduino received server_shake:");
+    console.log(data);
   }
+
+  //   else {
+  //     console.log("got something else:");
+  //     console.log(data);
+  //   }
+
+  //   if (data > 100) console.log(data);
+
+  //   if (data % 2 === 0) {
+  //     console.log("got even number, go up");
+  //     port.write("2");
+  //   } else {
+  //     console.log("got odd number, go down");
+  //     port.write("1");
+  //   }
 
   //   if (data == 15) {
   //     port.write("\u0080123456\r");

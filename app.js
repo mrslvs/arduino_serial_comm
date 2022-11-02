@@ -18,8 +18,6 @@ parser.on("data", (data) => {
       "got handshake, arduino is waiting for my confirmation for 3 seconds"
     );
 
-    // port.write("\u0080a\r");
-    // port.write("a", "ascii");
     port.write("abc\n");
   } else if (data == 992) {
     console.log("saving char to array");
@@ -32,41 +30,7 @@ parser.on("data", (data) => {
   } else {
     console.log("message: " + data);
   }
-
-  //   else {
-  //     console.log("got something else:");
-  //     console.log(data);
-  //   }
-
-  //   if (data > 100) console.log(data);
-
-  //   if (data % 2 === 0) {
-  //     console.log("got even number, go up");
-  //     port.write("2");
-  //   } else {
-  //     console.log("got odd number, go down");
-  //     port.write("1");
-  //   }
-
-  //   if (data == 15) {
-  //     port.write("\u0080123456\r");
-  //   }
 });
-
-// port.on("open", () => {
-//   console.log("port has opened");
-
-//   setTimeout(() => {
-//     console.log("Delayed for 1 second.");
-
-//     port.write("\u0080123456\r", (err) => {
-//       if (err) {
-//         return console.log("Error on write: ", err.message);
-//       }
-//       console.log("message written");
-//     });
-//   }, 1000);
-// });
 
 // SerialPort.list().then((ports) => {
 //   ports.forEach(function (port) {
